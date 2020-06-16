@@ -1,0 +1,65 @@
+apiVersion: skaffold/v2beta3
+kind: Config
+deploy:
+  kubectl:
+    manifests:
+      - ./web/infra/k8s/*.yaml
+      - ./ticketing.com/infra/k8s/*.yaml
+      - ./auth/infra/k8s/*.yaml
+      - ./tickets/infra/k8s/*.yaml
+      - ./nats-streaming/infra/k8s/*.yaml
+      - ./orders/infra/k8s/*.yaml
+      - ./expiration/infra/k8s/*.yaml
+      - ./payment/infra/k8s/*.yaml
+build:
+  local:
+    push: false
+  artifacts:
+    - image: basov/ticket-auth
+      context: ./auth
+      docker:
+        dockerfile: ./.devcontainer/Dockerfile
+      sync:
+        manual:
+          - src: './src/**/*.ts'
+            dest: .
+    - image: basov/ticket-web
+      context: ./web
+      docker:
+        dockerfile: ./.devcontainer/Dockerfile
+      sync:
+        manual:
+          - src: '**/*.js*'
+            dest: .
+    - image: basov/ticket-tickets
+      context: ./tickets
+      docker:
+        dockerfile: ./.devcontainer/Dockerfile
+      sync:
+        manual:
+          - src: './src/**/*.ts'
+            dest: .
+    - image: basov/ticket-orders
+      context: ./orders
+      docker:
+        dockerfile: ./.devcontainer/Dockerfile
+      sync:
+        manual:
+          - src: './src/**/*.ts'
+            dest: .
+    - image: basov/ticket-expiration
+      context: ./expiration
+      docker:
+        dockerfile: ./.devcontainer/Dockerfile
+      sync:
+        manual:
+          - src: './src/**/*.ts'
+            dest: .
+    - image: basov/ticket-payment
+      context: ./payment
+      docker:
+        dockerfile: ./.devcontainer/Dockerfile
+      sync:
+        manual:
+          - src: './src/**/*.ts'
+            dest: .

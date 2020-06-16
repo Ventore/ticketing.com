@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tickets
+spec:
+  selector:
+    matchLabels:
+      app: tickets
+  template:
+    metadata:
+      labels:
+        app: tickets
+    spec:
+      containers:
+        - name: tickets
+          image: basov/ticket-tickets
+          env:
+            - name: MONGO_URI
+              value: 'mongodb://tickets-mongo:27017/tickets'
+            - name: NATS_URL
+              value: 'http://nats-streaming:4222'
+            - name: NATS_CLUSTER_ID
+              value: 'ticketing'
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: JWS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWS_KEY
+          ports:
+            - containerPort: 9229
+            - containerPort: 4000

@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment-mongo
+spec:
+  selector:
+    matchLabels:
+      app: payment-mongo
+  template:
+    metadata:
+      labels:
+        app: payment-mongo
+    spec:
+      containers:
+      - name: payment-mongo
+        image: mongo
