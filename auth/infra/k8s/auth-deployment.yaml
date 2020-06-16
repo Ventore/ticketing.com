@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth
+spec:
+  selector:
+    matchLabels:
+      app: auth
+  template:
+    metadata:
+      labels:
+        app: auth
+    spec:
+      containers:
+        - name: auth
+          image: basov/ticket-auth
+          env:
+            - name: MONGO_URI
+              value: 'mongodb://auth-mongo:27017/auth'
+            - name: JWS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWS_KEY
+          ports:
+            - containerPort: 9229
+            - containerPort: 4000
