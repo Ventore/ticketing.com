@@ -7,7 +7,8 @@
     "build": "tsc",
     "debug": "nodemon",
     "debug:docker": "nodemon",
-    "test": "jest --watchAll --no-cache"
+    "test": "jest --watchAll --no-cache",
+    "test:ci": "jest"
   },
   "jest": {
     "preset": "ts-jest",
