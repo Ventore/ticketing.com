@@ -1,0 +1,31 @@
+name: deploy-manifests
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - ./web/infra/k8s
+      - ./ticketing.com/infra/k8s
+      - ./auth/infra/k8s
+      - ./tickets/infra/k8s
+      - ./nats-streaming/infra/k8s
+      - ./orders/infra/k8s
+      - ./expiration/infra/k8s
+      - ./payment/infra/k8s
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_TOKEN }}
+      - run: doctl kubernetes cluster kubeconfig save ticketing-eu
+      - run: kubectl apply -f web/infra/k8s/*.yaml
+      - run: kubectl apply -f ticketing.com/infra/k8s/*.yaml
+      - run: kubectl apply -f auth/infra/k8s/*.yaml
+      - run: kubectl apply -f tickets/infra/k8s/*.yaml
+      - run: kubectl apply -f nats-streaming/infra/k8s/*.yaml
+      - run: kubectl apply -f orders/infra/k8s/*.yaml
+      - run: kubectl apply -f expiration/infra/k8s/*.yaml
+      - run: kubectl apply -f payment/infra/k8s/*.yaml
