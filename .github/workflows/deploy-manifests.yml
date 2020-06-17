@@ -22,7 +22,7 @@ jobs:
           token: ${{ secrets.DIGITALOCEAN_TOKEN }}
       - run: doctl kubernetes cluster kubeconfig save ticketing-eu
       - run: kubectl apply -f web/infra/k8s/
-      - run: kubectl apply -f ticketing.com/infra/k8s/
+      - run: kubectl apply -f ticketing.com/infra/k8s-prod/
       - run: kubectl apply -f auth/infra/k8s/
       - run: kubectl apply -f tickets/infra/k8s/
       - run: kubectl apply -f nats-streaming/infra/k8s/
