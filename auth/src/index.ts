@@ -1,8 +1,8 @@
 if (!process.env.JWS_KEY) {
-  throw new Error('JWS_KEY is not provided');
+  throw new Error('JWS_KEY is not provided!');
 }
 if (!process.env.MONGO_URI) {
-  throw new Error('MONGO_URI is not provided');
+  throw new Error('MONGO_URI is not provided!');
 }
 
 import mongoose from 'mongoose';
