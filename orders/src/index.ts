@@ -41,6 +41,7 @@ natsService
     new PaymentCreatedListener(natsService.client).listen();
 
     natsService.client.on('close', () => {
+      console.log('Nats was closed');
       process.exit();
     });
   })
