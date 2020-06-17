@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - tickets/**
+      - '!tickets/infra/**'
+  
 
 jobs:
   build: 

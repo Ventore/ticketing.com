@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - payment/**
+      - '!payment/infra/**'
 
 jobs:
   build: 
