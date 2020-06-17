@@ -32,10 +32,8 @@ natsService
       useUnifiedTopology: true,
       useCreateIndex: true,
     });
-
     new OrderCreatedListener(natsService.client).listen();
     new OrderCancelledListener(natsService.client).listen();
-
     natsService.client.on('close', () => {
       process.exit();
     });
