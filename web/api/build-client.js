@@ -4,7 +4,7 @@ export default ({ req }) => {
   if (typeof window === 'undefined') {
     return axios.create({
       baseURL:
-        'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local',
+        'http://www.swaip.app/',
       headers: req.headers,
     });
   } else {
