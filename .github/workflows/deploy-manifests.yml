@@ -4,14 +4,14 @@ on:
     branches:
       - master
     paths:
-      - ./web/infra/k8s
-      - ./ticketing.com/infra/k8s
-      - ./auth/infra/k8s
-      - ./tickets/infra/k8s
-      - ./nats-streaming/infra/k8s
-      - ./orders/infra/k8s
-      - ./expiration/infra/k8s
-      - ./payment/infra/k8s
+      - web/infra/k8s/**
+      - ticketing.com/infra/k8s/**
+      - auth/infra/k8s/**
+      - tickets/infra/k8s/**
+      - nats-streaming/infra/k8s/**
+      - orders/infra/k8s/**
+      - expiration/infra/k8s/**
+      - payment/infra/k8s/**
 jobs:
   build:
     runs-on: ubuntu-latest
