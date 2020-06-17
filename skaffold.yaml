@@ -4,7 +4,7 @@ deploy:
   kubectl:
     manifests:
       - ./web/infra/k8s/*.yaml
-      - ./ticketing.com/infra/k8s/*.yaml
+      - ./ticketing.com/infra/k8s-dev/*.yaml
       - ./auth/infra/k8s/*.yaml
       - ./tickets/infra/k8s/*.yaml
       - ./nats-streaming/infra/k8s/*.yaml
