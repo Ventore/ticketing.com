@@ -24,7 +24,6 @@ natsService
     natsService.client.on('close', () => {
       process.exit();
     });
-
     new OrderCreatedListener(natsService.client).listen();
   })
   .catch((error) => {
