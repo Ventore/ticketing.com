@@ -5,7 +5,7 @@ on:
       - master
     paths:
       - web/infra/k8s/**
-      - ticketing.com/infra/k8s/**
+      - ticketing.com/infra/k8s-prod/**
       - auth/infra/k8s/**
       - tickets/infra/k8s/**
       - nats-streaming/infra/k8s/**
