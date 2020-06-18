@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: cd web && docker build -t basov/ticket-web -f ./.devcontainer/Dockerfile .
+      - run: cd web && docker build -t basov/ticket-web .
       - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
         env: 
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
