@@ -34,6 +34,7 @@ natsService
     });
     new OrderCreatedListener(natsService.client).listen();
     new OrderCancelledListener(natsService.client).listen();
+    
     natsService.client.on('close', () => {
       process.exit();
     });
