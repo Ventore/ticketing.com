@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: swaip-app-tls
+spec:
+  name: swaip-app
+  isserRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: swaip.app
+  dnsNames:
+    - swaip.app
+    - www.swaip.app
