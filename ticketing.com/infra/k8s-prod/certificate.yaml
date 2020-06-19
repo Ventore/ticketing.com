@@ -3,8 +3,8 @@ kind: Certificate
 metadata:
   name: swaip-app-tls
 spec:
-  name: swaip-app
-  isserRef:
+  secretName: swaip-app
+  issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
   commonName: swaip.app
